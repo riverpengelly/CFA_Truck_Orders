@@ -1,22 +1,87 @@
-# Chick-fil-A Inventory and Sales Automation Project
+# Chick-fil-A Truck Order Automation and Data Aggregation
 
-This project automates the processing of Chick-fil-A truck order data, enabling efficient tracking of inventory and sales trends. By leveraging Python, it converts truck order PDFs into organized Excel spreadsheets, aggregates monthly data, and provides insights to optimize operations.
+This project automates the processing, aggregation, and organization of Chick-fil-A truck order data. It streamlines inventory management and cost analysis by converting truck order PDFs into structured Excel files, generating monthly summaries, and consolidating data for efficient trend analysis.
 
 ## Features
-- **PDF to Excel Automation**: Converts truck order PDFs into Excel files for easy data handling.
-- **Data Aggregation**: Combines monthly data into a single spreadsheet, summarizing totals for inventory and sales trends.
-- **Trend Analysis**: Identifies anomalies and trends in inventory costs, aiding in strategic decision-making.
-- **Cost Optimization**: Tracks key items to minimize waste and improve operational efficiency.
+
+1. **Automated PDF Processing**:
+   - Extracts key data (e.g., supplier codes, item descriptions, quantities, unit costs, and total costs) from PDF files.
+   - Converts data into Excel spreadsheets for easy manipulation and analysis.
+
+2. **Data Cleaning and Validation**:
+   - Ensures descriptions are properly cleaned and numeric values are standardized.
+   - Logs warnings for incomplete or invalid rows, maintaining data integrity.
+
+3. **Monthly Data Aggregation**:
+   - Combines data across files within a monthly directory.
+   - Summarizes total quantities and costs per item, with a total monthly cost calculation.
+
+4. **Centralized Data Organization**:
+   - Organizes all processed and summarized data into respective directories.
+   - Consolidates monthly summaries into a central folder for streamlined reporting.
+
+5. **Scalable Workflow**:
+   - Handles multiple directories (e.g., monthly subfolders) in batch processing mode.
+
+## File Structure
+
+The repository is organized as follows:
+
+CFA_Truck_Order_Automation/
+├── src/                       # Python scripts for processing and aggregation
+│   ├── process_pdfs.py        # Extracts and processes PDF data
+│   ├── aggregate_months.py    # Aggregates data across monthly directories
+│   ├── organize_summaries.py  # Collects all monthly summaries into a central folder
+│
+├── data/                      # Input and output directories for processing
+│   ├── input/                 # PDF files for each month
+│   └── output/                # Processed Excel files and summaries
+│
+├── README.md                  # Documentation and setup guide
+├── requirements.txt           # Python dependencies
+└── .gitignore                 # Ignore unnecessary files
+
 
 ## Technologies Used
-- **Python Libraries**:
-  - `pandas`: Data manipulation and aggregation
-  - `tabula`: Extracting tabular data from PDFs
-  - `os`: File and directory management
-  - `logging`: Process tracking and debugging
-  - `fuzzywuzzy`: String matching for description accuracy
-  - `re`: Regular expressions for pattern matching
-- **Excel**: Output format for processed data
+## Libraries Used
+
+The following Python libraries are used in this project:
+
+1. **`os`**  
+   - Handles directory and file operations (e.g., creating and navigating folders).
+
+2. **`re`**  
+   - Provides regular expression support for extracting patterns (e.g., supplier codes) and cleaning text.
+
+3. **`pandas`**  
+   - Enables data manipulation and analysis, including creating and aggregating dataframes.
+
+4. **`pdfplumber`**  
+   - Parses PDF files to extract tabular data.
+
+5. **`logging`**  
+   - Logs information, warnings, and errors to track script execution.
+
+6. **`shutil`**  
+   - Manages file operations, such as copying and moving files.
+
+7. **`openpyxl`**  
+   - Reads and writes Excel files (`.xlsx`).
+
+8. **`fuzzywuzzy`**  
+   - Matches strings approximately to ensure accurate description matching.
+
+9. **`python-Levenshtein`**  
+   - Speeds up string matching calculations (optional dependency for `fuzzywuzzy`).
+
+### Installation
+
+These libraries can be installed using the `requirements.txt` file. To install all dependencies, run:
+
+```bash
+pip install -r requirements.txt
+```
+**Excel**: Output format for processed data
 
 ## Workflow
 1. **PDF Extraction**: Automatically reads truck order PDFs and extracts key information (e.g., item descriptions, supplier codes, quantities, and costs).
