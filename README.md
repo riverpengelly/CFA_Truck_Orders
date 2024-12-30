@@ -1,32 +1,25 @@
+
 # Chick-fil-A Truck Order Automation and Data Aggregation
 
-This project automates the processing, aggregation, and organization of Chick-fil-A truck order data. It streamlines inventory management and cost analysis by converting truck order PDFs into structured Excel files, generating monthly summaries, and consolidating data for efficient trend analysis.
+This project automates the processing, aggregation, and organization of Chick-fil-A truck order data. By converting truck order PDFs into structured Excel files and generating monthly summaries, it streamlines inventory management and cost analysis.
 
 ## Features
 
-1. **Automated PDF Processing**:
-   - Extracts key data (e.g., supplier codes, item descriptions, quantities, unit costs, and total costs) from PDF files.
-   - Converts data into Excel spreadsheets for easy manipulation and analysis.
+- **Automated PDF Processing**: Extracts key data (e.g., supplier codes, item descriptions, quantities, unit costs, and total costs) from PDF files and converts them into Excel spreadsheets for easy analysis.
 
-2. **Data Cleaning and Validation**:
-   - Ensures descriptions are properly cleaned and numeric values are standardized.
-   - Logs warnings for incomplete or invalid rows, maintaining data integrity.
+- **Data Cleaning and Validation**: Ensures descriptions are properly cleaned, numeric values are standardized, and logs warnings for incomplete or invalid rows to maintain data integrity.
 
-3. **Monthly Data Aggregation**:
-   - Combines data across files within a monthly directory.
-   - Summarizes total quantities and costs per item, with a total monthly cost calculation.
+- **Monthly Data Aggregation**: Combines data across files within a monthly directory, summarizing total quantities and costs per item, along with total monthly cost calculations.
 
-4. **Centralized Data Organization**:
-   - Organizes all processed and summarized data into respective directories.
-   - Consolidates monthly summaries into a central folder for streamlined reporting.
+- **Centralized Data Organization**: Organizes all processed and summarized data into respective directories and consolidates monthly summaries into a central folder for streamlined reporting.
 
-5. **Scalable Workflow**:
-   - Handles multiple directories (e.g., monthly subfolders) in batch processing mode.
+- **Scalable Workflow**: Handles multiple directories (e.g., monthly subfolders) in batch processing mode, accommodating large datasets efficiently.
 
 ## File Structure
 
 The repository is organized as follows:
 
+```
 CFA_Truck_Order_Automation/
 ├── src/                       # Python scripts for processing and aggregation
 │   ├── process_pdfs.py        # Extracts and processes PDF data
@@ -40,73 +33,81 @@ CFA_Truck_Order_Automation/
 ├── README.md                  # Documentation and setup guide
 ├── requirements.txt           # Python dependencies
 └── .gitignore                 # Ignore unnecessary files
+```
 
-
-## Technologies Used
 ## Libraries Used
 
-The following Python libraries are used in this project:
+The following Python libraries are utilized in this project:
 
-1. **`os`**  
-   - Handles directory and file operations (e.g., creating and navigating folders).
+- **`os`**: Handles directory and file operations.
 
-2. **`re`**  
-   - Provides regular expression support for extracting patterns (e.g., supplier codes) and cleaning text.
+- **`re`**: Provides regular expression support for pattern extraction and text cleaning.
 
-3. **`pandas`**  
-   - Enables data manipulation and analysis, including creating and aggregating dataframes.
+- **`pandas`**: Enables data manipulation and analysis, including creating and aggregating dataframes.
 
-4. **`pdfplumber`**  
-   - Parses PDF files to extract tabular data.
+- **`pdfplumber`**: Parses PDF files to extract tabular data.
 
-5. **`logging`**  
-   - Logs information, warnings, and errors to track script execution.
+- **`logging`**: Logs information, warnings, and errors to track script execution.
 
-6. **`shutil`**  
-   - Manages file operations, such as copying and moving files.
+- **`shutil`**: Manages file operations, such as copying and moving files.
 
-7. **`openpyxl`**  
-   - Reads and writes Excel files (`.xlsx`).
+- **`openpyxl`**: Reads and writes Excel files (`.xlsx`).
 
-8. **`fuzzywuzzy`**  
-   - Matches strings approximately to ensure accurate description matching.
+- **`fuzzywuzzy`**: Matches strings approximately to ensure accurate description matching.
 
-9. **`python-Levenshtein`**  
-   - Speeds up string matching calculations (optional dependency for `fuzzywuzzy`).
+- **`python-Levenshtein`**: Speeds up string matching calculations (optional dependency for `fuzzywuzzy`).
 
-### Installation
+## Setup Instructions
 
-These libraries can be installed using the `requirements.txt` file. To install all dependencies, run:
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/riverpengelly/CFA_Truck_Orders.git
+   cd CFA_Truck_Orders
+   ```
 
-```bash
-pip install -r requirements.txt
-```
-**Excel**: Output format for processed data
+2. **Install Dependencies**:
+   Install the required Python libraries listed in `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## Workflow
-1. **PDF Extraction**: Automatically reads truck order PDFs and extracts key information (e.g., item descriptions, supplier codes, quantities, and costs).
-2. **Data Cleaning**: Cleans and organizes extracted data for consistency and accuracy.
-3. **Aggregation**: Combines monthly data to identify trends and generate actionable insights.
-4. **Optimization**: Analyzes data to reduce waste, track costs, and improve inventory management.
+3. **Prepare Input Data**:
+   Place your truck order PDF files in the designated `data/input/` directory.
+
+4. **Run the Scripts**:
+   - **Process PDFs**: Converts PDFs into Excel files.
+     ```bash
+     python src/process_pdfs.py
+     ```
+   - **Aggregate Monthly Data**: Combines data into monthly summaries.
+     ```bash
+     python src/aggregate_months.py
+     ```
+   - **Organize Summaries**: Collects all monthly summaries into a central folder.
+     ```bash
+     python src/organize_summaries.py
+     ```
 
 ## Benefits
-- Reduces manual workload for truck order processing (~5 minutes per batch).
-- Improves data accuracy and accessibility.
-- Provides actionable insights for cost reduction and operational efficiency.
 
-## Usage
-1. Place your PDF truck orders in the designated input folder.
-2. Run the script to automatically generate Excel spreadsheets.
-3. Review the aggregated monthly data for trends and insights.
+- **Time Efficiency**: Automates manual data entry tasks, saving valuable time.
+
+- **Data Accuracy**: Improves data consistency and reduces errors.
+
+- **Actionable Insights**: Provides comprehensive reports for informed inventory and cost management decisions.
 
 ## Future Enhancements
-- Incorporating real-time data visualization.
-- Adding machine learning models to predict inventory needs.
-- Expanding functionality to handle additional data sources.
+
+- **Data Visualization**: Integrate tools for interactive dashboards.
+
+- **Predictive Analytics**: Add features for inventory demand forecasting.
+
+- **Extended Format Support**: Expand compatibility to include additional data formats (e.g., CSV).
 
 ## Acknowledgments
-This project was developed as part of my role as Back of House Team Leader at Chick-fil-A Sublett, in collaboration with the Executive Director. It is designed to enhance operational efficiency and support decision-making in a high-paced environment.
+
+This project was developed as part of my role as Back of House Team Leader at Chick-fil-A Sublett. It demonstrates how automation and data-driven approaches can enhance operational efficiency and decision-making.
 
 ---
 
-Feel free to explore the repository and contribute! If you have any questions or suggestions, please open an issue or reach out.
+Feel free to explore the repository, suggest improvements, or contribute!
